@@ -13,7 +13,7 @@ btn.addEventListener('click', (e) => {
         alert("Please enter a valid name.");
         return;
     }
-    if (!stdid) {
+    if (!stdid || isNaN(stdid)) {
         alert("Please enter a valid Student ID.");
         return;
     }
@@ -21,7 +21,7 @@ btn.addEventListener('click', (e) => {
         alert("Please enter a valid email address.");
         return;
     }
-    if (!contact) {
+    if (!contact || isNaN(contact)) {
         alert("Please enter a valid contact number.");
         return;
     }
@@ -99,6 +99,7 @@ function addTableData(name, stdid, email, contact) {
 
             let editedEmail = emailcell.textContent.trim();
             let editedContact = contactcell.textContent.trim();
+            let editedStdid = stdidcell.textContent.trim();
 
             if (!editedEmail.includes('@')) {
                 alert("Please enter a valid email address.");
@@ -106,7 +107,11 @@ function addTableData(name, stdid, email, contact) {
             } else if (isNaN(editedContact)) {
                 alert("Please enter a valid contact number.");
                 contactcell.textContent = originalValues.contact;
-            } else {
+            } else if(isNaN(editedStdid)){
+                alert("Please enter a valid student Id number.")
+                stdidcell.textContent = originalValues.stdid;
+            } 
+            else {
                 editbtn.textContent = "Edit";
                 namecell.textContent = namecell.textContent.trim();
                 stdidcell.textContent = stdidcell.textContent.trim();
